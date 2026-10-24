@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Frontend dependencies and builds
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets / OAuth credentials
+.env
+*.pem
+secrets.json
+credentials.json
+token.json
+client_secret*.json
+
+# Generated traces and logs
+traces/
+*.trace
+*.log
+
+# Local SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Scratch and utility script caches
+scratch/
+scripts/__pycache__/
+backend/**/__pycache__/
+
+# Temporary patch, recovery, and debug scripts
+add_api.py
+add_fixtures.py
+debug_db.py
+debug_delete.py
+fix.py
+patch_api.py
+patch_calendar.py
+recover.py
+recover2.py
+
+# Legacy phase and milestone reports
+phase_*_report.*
+final_validation_report.txt
+gmail_migration_report.txt
+metrics_report.txt
+# Graphify output / cache
+graphify-out/
+.graphify/
