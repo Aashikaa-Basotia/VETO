@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-base: #101210;
+  --color-bg-surface: #191c18;
+  --color-bg-subtle: #141713;
+  --color-bg-elevated: #20241f;
+
+  --color-border-subtle: #1e221d;
+  --color-border-base: #262c24;
+  --color-border-strong: #343b32;
+
+  --color-text-primary: #f0eee5;
+  --color-text-secondary: #a5a69c;
+  --color-text-muted: #6f736a;
+
+  --color-accent-primary: #a2b89a;
+  --color-accent-pale: #d0dec7;
+  --color-accent-hover: #b5c9ad;
+
+  --color-threat: #c25d54;
+  --color-threat-bg: rgba(194, 93, 84, 0.12);
+  --color-threat-border: rgba(194, 93, 84, 0.28);
+
+  --color-warning: #d4a359;
+  --color-warning-bg: rgba(212, 163, 89, 0.12);
+  --color-warning-border: rgba(212, 163, 89, 0.28);
+
+  --color-allow: #8fa887;
+  --color-allow-bg: rgba(143, 168, 135, 0.12);
+  --color-allow-border: rgba(143, 168, 135, 0.28);
+
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: "Newsreader", "Playfair Display", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+}
+
+@keyframes orbit-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 75s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 90s linear infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit-slow,
+  .animate-orbit-reverse,
+  .animate-pulse-subtle {
+    animation: none !important;
+  }
+}
+
+@layer base {
+  body {
+    background-color: #101210;
+    color: #f0eee5;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar styling for technical density */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #101210;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #262c24;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #343b32;
+  }
+
+  ::selection {
+    background-color: #343b32;
+    color: #f0eee5;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #a2b89a;
+    outline-offset: 2px;
+  }
+}

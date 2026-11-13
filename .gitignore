@@ -18,6 +18,9 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
 
 # Virtual environments
 venv/
@@ -36,6 +39,7 @@ frontend/dist-ssr/
 .vscode/
 *.swp
 *.swo
+.DS_Store
 
 # Secrets / OAuth credentials
 .env
@@ -61,6 +65,14 @@ scripts/__pycache__/
 backend/**/__pycache__/
 
 # Temporary patch, recovery, and debug scripts
+scripts/*.txt
+scripts/*patch*.py
+scripts/*fix*.py
+scripts/*recover*.py
+scripts/*debug*.py
+scripts/add_api.py
+scripts/add_fixtures.py
+scripts/recovered_gateway.py
 add_api.py
 add_fixtures.py
 debug_db.py
@@ -76,6 +88,7 @@ phase_*_report.*
 final_validation_report.txt
 gmail_migration_report.txt
 metrics_report.txt
+
 # Graphify output / cache
 graphify-out/
 .graphify/

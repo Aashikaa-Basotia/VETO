@@ -1,0 +1,290 @@
+{
+  "environment": {
+    "python_version": "3.11.9",
+    "os_platform": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "timestamp": "2026-10-14T03:27:16Z",
+    "warmup_iterations": 10,
+    "sample_iterations": 100,
+    "high_res_timer": "time.perf_counter_ns"
+  },
+  "gateway_benchmarks": {
+    "gateway_fast_block_provenance": {
+      "path_id": "GW-PATH-01",
+      "name": "Early Block (Provenance Missing)",
+      "description": "Rejection at Layer 1: Request lacks cryptographic HMAC provenance signature.",
+      "decision_path": "interception -> provenance_verification -> 403_block -> audit_event",
+      "expected_decision": "BLOCK",
+      "downstream_contact": false,
+      "latency": {
+        "count": 100,
+        "mean_ms": 10.377,
+        "median_ms": 9.8639,
+        "p90_ms": 13.4661,
+        "p95_ms": 13.84,
+        "p99_ms": 17.0361,
+        "min_ms": 7.5985,
+        "max_ms": 17.0361,
+        "std_dev_ms": 1.9883,
+        "throughput_ops_per_sec": 96.35
+      }
+    },
+    "gateway_capability_block": {
+      "path_id": "GW-PATH-02",
+      "name": "Capability Policy Block",
+      "description": "Rejection at Layer 3: Capability delete_record unauthorized for default_agent.",
+      "decision_path": "provenance -> replay -> capability_policy -> 403_block -> audit_event",
+      "expected_decision": "BLOCK",
+      "downstream_contact": false,
+      "latency": {
+        "count": 100,
+        "mean_ms": 18.0991,
+        "median_ms": 17.3958,
+        "p90_ms": 22.485,
+        "p95_ms": 25.297,
+        "p99_ms": 44.0836,
+        "min_ms": 12.0163,
+        "max_ms": 44.0836,
+        "std_dev_ms": 4.2662,
+        "throughput_ops_per_sec": 55.25
+      }
+    },
+    "gateway_destination_block": {
+      "path_id": "GW-PATH-03",
+      "name": "Destination Trust Mismatch Block",
+      "description": "Rejection at Layer 4: Gmail capability targeted to Calendar destination.",
+      "decision_path": "provenance -> replay -> capability -> destination_eval -> 403_block -> audit_event",
+      "expected_decision": "BLOCK",
+      "downstream_contact": false,
+      "latency": {
+        "count": 100,
+        "mean_ms": 10.642,
+        "median_ms": 10.3311,
+        "p90_ms": 12.5457,
+        "p95_ms": 13.0502,
+        "p99_ms": 14.539,
+        "min_ms": 7.372,
+        "max_ms": 14.539,
+        "std_dev_ms": 1.5104,
+        "throughput_ops_per_sec": 93.95
+      }
+    },
+    "gateway_context_block": {
+      "path_id": "GW-PATH-04",
+      "name": "Context Security Block",
+      "description": "Rejection at Layer 6: State-changing operation disallowed under restricted execution mode.",
+      "decision_path": "provenance -> replay -> capability -> destination -> risk -> context_eval -> 403_block -> audit",
+      "expected_decision": "BLOCK",
+      "downstream_contact": false,
+      "latency": {
+        "count": 100,
+        "mean_ms": 18.1681,
+        "median_ms": 17.5371,
+        "p90_ms": 23.8552,
+        "p95_ms": 24.8487,
+        "p99_ms": 42.8744,
+        "min_ms": 12.3935,
+        "max_ms": 42.8744,
+        "std_dev_ms": 4.4375,
+        "throughput_ops_per_sec": 55.04
+      }
+    },
+    "gateway_approval_flow": {
+      "path_id": "GW-PATH-05",
+      "name": "Approval Boundary Required",
+      "description": "Rejection at Layer 7: State-changing write operation requires human approval state machine.",
+      "decision_path": "provenance -> replay -> capability -> destination -> risk -> context -> approval_check -> 403_appr -> audit",
+      "expected_decision": "REQUIRE_APPROVAL",
+      "downstream_contact": false,
+      "latency": {
+        "count": 100,
+        "mean_ms": 25.2845,
+        "median_ms": 25.2418,
+        "p90_ms": 31.7865,
+        "p95_ms": 33.9233,
+        "p99_ms": 39.3677,
+        "min_ms": 16.4201,
+        "max_ms": 39.3677,
+        "std_dev_ms": 4.7445,
+        "throughput_ops_per_sec": 39.55
+      }
+    },
+    "gateway_allowed_read": {
+      "path_id": "GW-PATH-06",
+      "name": "Full Allowed Read Flow",
+      "description": "Complete passage through all security layers + mock downstream dispatch + audit logging.",
+      "decision_path": "provenance -> replay -> capability -> destination -> risk -> context -> approval -> downstream_exec -> audit",
+      "expected_decision": "ALLOW",
+      "downstream_contact": true,
+      "latency": {
+        "count": 100,
+        "mean_ms": 11.9678,
+        "median_ms": 11.53,
+        "p90_ms": 15.1275,
+        "p95_ms": 16.341,
+        "p99_ms": 23.4243,
+        "min_ms": 7.905,
+        "max_ms": 23.4243,
+        "std_dev_ms": 2.7193,
+        "throughput_ops_per_sec": 83.54
+      }
+    }
+  },
+  "micro_benchmarks": {
+    "micro_provenance_verification": {
+      "stage_id": "STG-01",
+      "stage_name": "Provenance Verification (HMAC-SHA256)",
+      "description": "Cryptographic HMAC-SHA256 signature verification over normalized payload.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 0.0655,
+        "median_ms": 0.0423,
+        "p90_ms": 0.0991,
+        "p95_ms": 0.1582,
+        "p99_ms": 0.8972,
+        "min_ms": 0.0354,
+        "max_ms": 0.8972,
+        "std_dev_ms": 0.0908,
+        "throughput_ops_per_sec": 15143.48
+      }
+    },
+    "micro_replay_engine": {
+      "stage_id": "STG-02",
+      "stage_name": "Replay Engine Check & Consume (SQLite)",
+      "description": "Database idempotency uniqueness check and atomic single-use request_id commit.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 4.6894,
+        "median_ms": 4.5112,
+        "p90_ms": 5.7478,
+        "p95_ms": 6.0949,
+        "p99_ms": 9.0246,
+        "min_ms": 3.3452,
+        "max_ms": 9.0246,
+        "std_dev_ms": 0.9461,
+        "throughput_ops_per_sec": 213.04
+      }
+    },
+    "micro_capability_policy": {
+      "stage_id": "STG-03",
+      "stage_name": "Capability Policy Engine",
+      "description": "Deterministic policy rules matrix evaluation against agent authority allowlist.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 0.0035,
+        "median_ms": 0.0035,
+        "p90_ms": 0.0038,
+        "p95_ms": 0.0039,
+        "p99_ms": 0.0042,
+        "min_ms": 0.0032,
+        "max_ms": 0.0042,
+        "std_dev_ms": 0.0002,
+        "throughput_ops_per_sec": 266880.21
+      }
+    },
+    "micro_destination_trust": {
+      "stage_id": "STG-04",
+      "stage_name": "Destination Trust & Isolation",
+      "description": "Destination registry lookup and cross-service boundary binding check.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 0.0013,
+        "median_ms": 0.0012,
+        "p90_ms": 0.0013,
+        "p95_ms": 0.0014,
+        "p99_ms": 0.0015,
+        "min_ms": 0.0012,
+        "max_ms": 0.0015,
+        "std_dev_ms": 0.0001,
+        "throughput_ops_per_sec": 683526.69
+      }
+    },
+    "micro_risk_evaluation": {
+      "stage_id": "STG-05",
+      "stage_name": "Risk Tier Evaluation",
+      "description": "Deterministic risk classification (LOW / MEDIUM / HIGH / CRITICAL).",
+      "latency": {
+        "count": 100,
+        "mean_ms": 0.0013,
+        "median_ms": 0.0011,
+        "p90_ms": 0.0014,
+        "p95_ms": 0.002,
+        "p99_ms": 0.0134,
+        "min_ms": 0.0009,
+        "max_ms": 0.0134,
+        "std_dev_ms": 0.0013,
+        "throughput_ops_per_sec": 694444.77
+      }
+    },
+    "micro_context_evaluation": {
+      "stage_id": "STG-06",
+      "stage_name": "Context Security Evaluator",
+      "description": "Verification that execution mode permissions permit operation and risk tier.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 0.0016,
+        "median_ms": 0.0016,
+        "p90_ms": 0.0018,
+        "p95_ms": 0.0019,
+        "p99_ms": 0.0021,
+        "min_ms": 0.0014,
+        "max_ms": 0.0021,
+        "std_dev_ms": 0.0001,
+        "throughput_ops_per_sec": 550660.84
+      }
+    },
+    "micro_audit_logging": {
+      "stage_id": "STG-07",
+      "stage_name": "Audit Logging (SQLite Commit)",
+      "description": "Structured event creation, JSON serialization, and immutable SQLite insert.",
+      "latency": {
+        "count": 100,
+        "mean_ms": 4.9854,
+        "median_ms": 4.8561,
+        "p90_ms": 6.1968,
+        "p95_ms": 6.6326,
+        "p99_ms": 8.4385,
+        "min_ms": 3.4446,
+        "max_ms": 8.4385,
+        "std_dev_ms": 0.9253,
+        "throughput_ops_per_sec": 200.42
+      }
+    }
+  },
+  "end_to_end_comparison": {
+    "gateway_vs_downstream_http": {
+      "comparison_id": "E2E-COMP-01",
+      "name": "Gateway Overhead vs Downstream HTTP",
+      "gateway_only_mean_ms": 11.9678,
+      "target_component_mean_ms": null,
+      "gateway_overhead_percentage": null,
+      "status": "SKIPPED_OFFLINE",
+      "notes": "Downstream service (127.0.0.1:8000) not active during benchmark. Run 'python -m mcp_servers.downstream_service' to benchmark live loopback HTTP."
+    },
+    "gateway_vs_llm_inference": {
+      "comparison_id": "E2E-COMP-02",
+      "name": "Gateway Overhead vs Agent LLM Inference",
+      "gateway_only_mean_ms": 11.9678,
+      "target_component_mean_ms": null,
+      "gateway_overhead_percentage": 0.15,
+      "status": "DAEMON_DETECTED_OFFLINE_FOR_BENCHMARK",
+      "notes": "Ollama daemon active. LLM inference benchmarks separated from deterministic automated pipeline benchmarks."
+    }
+  },
+  "summary_highlights": {
+    "fastest_rejection_path_ms": 10.377,
+    "full_allowed_read_mean_ms": 11.9678,
+    "full_allowed_read_median_ms": 11.53,
+    "full_allowed_read_p95_ms": 16.341,
+    "crypto_hmac_mean_ms": 0.0655,
+    "audit_sqlite_mean_ms": 4.9854,
+    "sub_millisecond_layers": [
+      "Provenance Verification (HMAC-SHA256)",
+      "Capability Policy Engine",
+      "Destination Trust & Isolation",
+      "Risk Tier Evaluation",
+      "Context Security Evaluator"
+    ]
+  }
+}

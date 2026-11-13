@@ -1,0 +1,214 @@
+{
+  "total_cases": 36,
+  "passed_cases": 36,
+  "failed_cases": 0,
+  "attack_detection_rate": 100.0,
+  "attack_prevention_rate": 100.0,
+  "false_allow_rate": 0.0,
+  "false_block_rate": 0.0,
+  "downstream_contact_rate": 2.7777777777777777,
+  "downstream_contacted": 1,
+  "downstream_not_contacted": 35,
+  "layer_metrics": {
+    "provenance": 4,
+    "replay": 0,
+    "capability": 6,
+    "destination": 9,
+    "risk": 0,
+    "context": 5,
+    "approval": 4,
+    "adapter_validation": 6
+  },
+  "category_metrics": {
+    "DESTINATION": {
+      "total_cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "PROVENANCE": {
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "CONTROL": {
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "detection_rate": 0.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 1
+    },
+    "CALENDAR": {
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "CAPABILITY": {
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "GMAIL": {
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "APPROVAL": {
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "RISK": {
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    },
+    "CONTEXT": {
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "detection_rate": 100.0,
+      "prevention_rate": 100.0,
+      "downstream_contact_count": 0
+    }
+  },
+  "mutation_metrics": {
+    "total_mutations": 350,
+    "passed_mutations": 350,
+    "failed_mutations": 0,
+    "mutation_pass_rate": 100.0,
+    "operators": {
+      "MISSING_FIELD": {
+        "total": 71,
+        "passed": 71,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "EMPTY_VALUE": {
+        "total": 38,
+        "passed": 38,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "NULL_VALUE": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "DESTINATION": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "CAPABILITY": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "APPROVAL": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "PROVENANCE": {
+        "total": 70,
+        "passed": 70,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "TYPE_CONFUSION": {
+        "total": 19,
+        "passed": 19,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "REPLAY": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "BOUNDARY_LENGTH": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "NORMALIZATION": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "pass_rate": 100.0
+      },
+      "PATH_INJECTION": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "pass_rate": 100.0
+      }
+    }
+  },
+  "confusion_matrix": {
+    "true_positives": 34,
+    "true_negatives": 2,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "precision": 100.0,
+    "recall": 100.0,
+    "specificity": 100.0,
+    "f1_score": 100.0,
+    "accuracy": 100.0
+  },
+  "operations_summary": {
+    "total_operations_evaluated": 36,
+    "allowed_count": 1,
+    "blocked_count": 30,
+    "approval_required_count": 5,
+    "allowed_by_operation": {
+      "get_downstream_status": 1
+    },
+    "blocked_by_operation": {
+      "send_email": 6,
+      "delete_calendar_event": 1,
+      "list_calendar_events": 3,
+      "create_calendar_event": 1,
+      "delete_record": 3,
+      "hack_system": 1,
+      "../../../etc/passwd": 1,
+      "create_record": 3,
+      "get_downstream_status": 6,
+      "get_email_metadata": 2,
+      "unknown_operation": 1,
+      "list_recent_emails": 2
+    },
+    "approval_required_by_operation": {
+      "create_record": 5
+    }
+  },
+  "timestamp": "2026-10-24T16:59:42.555915+00:00"
+}
